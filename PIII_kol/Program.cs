@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Globalization;
+using System.Linq;
+using System.Resources;
+using System.Text;
 
 namespace PIII_kol
 {
@@ -19,6 +23,7 @@ namespace PIII_kol
             CzasStworzenia = czas;
         }
     }
+
     class Program
     {
         [Flags]
@@ -33,8 +38,6 @@ namespace PIII_kol
         };
         static void Main(string[] args)
         {
-            //Zadanie 1
-
             int minuty = 0;
             int sekundy = 0;
             int suma_minut = 0;
@@ -54,13 +57,14 @@ namespace PIII_kol
             }
             while ((Console.ReadLine() == "tak"));
             Console.WriteLine($"lacznie trenowales {suma_minut} minut i {suma_Sekund} sekund podczas {trening} treningow");
-            
-            //zadanie 2
 
-            Console.WriteLine(
-                      "\n którą opcje chcesz włączyć:");
+            Console.WriteLine("Dostępne Opcje modułu komfortu: ");
             for (int val = 0; val <= 5; val++)
-                Console.WriteLine("{0,3} - {1:G}", val, (Kontrola)val);
+                Console.WriteLine("{0,4} - {1:G}", val, (Kontrola)val);
+            
+            //nie wiem w jaki sposób dać użytkownikowi możliwość wyboru 
+            
+               
 
         }
     }
