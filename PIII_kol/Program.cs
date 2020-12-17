@@ -19,10 +19,22 @@ namespace PIII_kol
             CzasStworzenia = czas;
         }
     }
-        class Program
+    class Program
     {
+        [Flags]
+        enum Kontrola : short
+        {
+            Chłodzenie = 0,
+            Nagrzewanie = 1,
+            Klimatyzacja = 2,
+            Nawigacja = 3,
+            Radio = 4,
+            CD = 5
+        };
         static void Main(string[] args)
         {
+            //Zadanie 1
+
             int minuty = 0;
             int sekundy = 0;
             int suma_minut = 0;
@@ -40,10 +52,16 @@ namespace PIII_kol
                 suma_Sekund += sekundy;
                 Console.WriteLine("Kolejny trening? tak/nie");
             }
-            while ((Console.ReadLine() == "tak") || (Console.ReadLine() == "nie"));
-            Console.WriteLine($"lacznie trenowales {suma_minut}minut i {suma_Sekund} sekund podczas {trening} treningow");
+            while ((Console.ReadLine() == "tak"));
+            Console.WriteLine($"lacznie trenowales {suma_minut} minut i {suma_Sekund} sekund podczas {trening} treningow");
+            
+            //zadanie 2
 
-            Komentarz a = new Komentarz("autor","test");
+            Console.WriteLine(
+                      "\n którą opcje chcesz włączyć:");
+            for (int val = 0; val <= 5; val++)
+                Console.WriteLine("{0,3} - {1:G}", val, (Kontrola)val);
+
         }
     }
 }
