@@ -11,17 +11,18 @@ namespace PIII_kol
         public string Autor;
         public string KomentowanyPost;
         public string Tresc;
-        public string Tagi;
+        public int[] Tagi;
         public string CzasStworzenia;
 
-        public Komentarz(string autor, string komentowany, string tresc, string tagi, string czas)
-        {
+        public Komentarz(string autor, string komentowany, string tresc, int[] tagi, string czas)
+        { 
             Autor = autor;
             KomentowanyPost = komentowany;
             Tresc = tresc;
             Tagi = tagi;
             CzasStworzenia = czas;
         }
+        
     }
 
     class Program
@@ -38,8 +39,8 @@ namespace PIII_kol
         };
         static void Main(string[] args)
         {
-            int minuty = 0;
-            int sekundy = 0;
+            int minuty;
+            int sekundy;
             int suma_minut = 0;
             int suma_Sekund = 0;
             int trening = 0;
@@ -61,10 +62,10 @@ namespace PIII_kol
             Console.WriteLine("Dostępne Opcje modułu komfortu: ");
             for (int val = 0; val <= 5; val++)
                 Console.WriteLine("{0,4} - {1:G}", val, (Kontrola)val);
-            
+
             //nie wiem w jaki sposób dać użytkownikowi możliwość wyboru 
-            
-               
+
+            Komentarz a = new Komentarz("uzytkownik1", "post1", "dluga wypowiedz", [1] ,"data");
 
         }
     }
