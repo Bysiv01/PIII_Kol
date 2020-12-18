@@ -60,19 +60,17 @@ namespace PIII_kol
             while ((Console.ReadLine() == "tak"));
             Console.WriteLine($"lacznie trenowales {suma_minut} minut(y) i {suma_Sekund} sekund(y) podczas {trening} treningow");
 
-            int NrOpcji;
-            string val;
-
-            Kontrola kontrola;
             
+                int NrOpcji;
+                string val;
             do
             {
-
                 Console.WriteLine("Dostępne funkcje:");
                 Wypisz();
                 val = Console.ReadLine();
                 NrOpcji = Convert.ToInt32(val);
 
+                Kontrola kontrola;
 
                 if (NrOpcji == 0)
                 {
