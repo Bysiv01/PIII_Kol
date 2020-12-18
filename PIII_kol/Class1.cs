@@ -25,12 +25,12 @@ namespace PIII_kol
         
             Tresc = tresc;
 
-            //if (Array.GetLength(tagi[]) <= 0)
-            //    throw new ArgumentException("Tagi nie mogą być puste");
-            //else
-            //{ 
+            if (tagi.Length <= 0)
+                throw new ArgumentException("Tagi nie mogą być puste");
+            else
+            { 
             Tagi = tagi;
-            //}
+            }
             DateTime data = new DateTime(2020, 1, 1);
             if (czasStworzenia < data) CzasStworzenia = czasStworzenia;
             else throw new ArgumentException("Data utworzenia nie może być starsza niż 01.01.2020r");
