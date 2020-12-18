@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Globalization;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Collections.Generic;
 
 namespace PIII_kol
 {
@@ -10,16 +12,27 @@ namespace PIII_kol
 
     class Program
     {
-        [Flags]
-        enum Kontrola : short
+        public static void Wypisz()
+            {
+                for (int i = 0; i < 6; i++)
+                {
+                    Console.WriteLine("{0,4} - {1:G}", i, (Kontrola)i);
+
+                }
+            }
+        enum Kontrola
         {
-            Chłodzenie = 0,
-            Nagrzewanie = 1,
-            Klimatyzacja = 2,
-            Nawigacja = 3,
-            Radio = 4,
-            CD = 5,
-            wyjscie = 6
+            Chłodzenie,
+            Nagrzewanie,
+            Klimatyzacja,
+            Nawigacja,
+            Radio,
+            CD,
+            Wyjscie
+        };
+        public static Komentarz[] Komentarze = new[]
+        {
+            new Komentarz("uzytkownik1","post1","wypowiedz",new[] {"tag"} ,new DateTime(2019, 12 ,12))
         };
 
         static void Main(string[] args)
@@ -32,63 +45,82 @@ namespace PIII_kol
             do
             {
                 trening++;
+                
                 Console.WriteLine($"trening{trening}");
                 Console.WriteLine("ile minut cwiczyles?");
                 minuty = System.Int32.Parse(Console.ReadLine());
                 Console.WriteLine("ile sekund cwiczyles?");
                 sekundy = System.Int32.Parse(Console.ReadLine());
+                
                 suma_minut += minuty;
                 suma_Sekund += sekundy;
+
                 Console.WriteLine("Kolejny trening? tak/nie");
             }
             while ((Console.ReadLine() == "tak"));
             Console.WriteLine($"lacznie trenowales {suma_minut} minut(y) i {suma_Sekund} sekund(y) podczas {trening} treningow");
 
-            static void wypisz()
-            {
-                Console.WriteLine("Dostępne Opcje modułu komfortu: ");
-                for (int value = 0; value <= 5; value++)
-                    Console.WriteLine("{0,4} - {1:G}", value, (Kontrola)value);
-            }
-
-            do
-            { 
-            string value;
             int NrOpcji;
-            wypisz();
-            value = Console.ReadLine();
-            NrOpcji = Convert.ToInt32(value);
-                switch (NrOpcji)
+            string val;
+
+            Kontrola kontrola;
+            
+            do
+            {
+
+                Console.WriteLine("Dostępne funkcje:");
+                Wypisz();
+                val = Console.ReadLine();
+                NrOpcji = Convert.ToInt32(val);
+
+
+                if (NrOpcji == 0)
                 {
-                    case 0:
-                        Console.WriteLine($"{Kontrola.Chłodzenie} 1");
+                    kontrola = Kontrola.Chłodzenie;
+                }
+                else if (NrOpcji == 1)
+                {
+                    kontrola = Kontrola.Nagrzewanie;
+                }
+                else if (NrOpcji == 2)
+                {
+                    kontrola = Kontrola.Klimatyzacja;
+                }
+                else if (NrOpcji == 3)
+                {
+                    kontrola = Kontrola.Nawigacja;
+                }
+                else if (NrOpcji == 4)
+                {
+                    kontrola = Kontrola.Radio;
+                }
+                else if (NrOpcji == 5)
+                {
+                    kontrola = Kontrola.CD;
+                }
+
+                switch (kontrola)
+                {
+                    case Kontrola.Chłodzenie:
+                        Console.WriteLine("Chłodzenie aktywowane");
                         break;
-                    case 1:
-                        Console.WriteLine($"{Kontrola.Nagrzewanie} 1");
-                        break;
-                    case 2:
-                        Console.WriteLine($"{Kontrola.Klimatyzacja} 1");
-                        break;
-                    case 3:
-                        Console.WriteLine($"{Kontrola.Nawigacja} 1");
-                        break;
-                    case 4:
-                        Console.WriteLine($"{Kontrola.Radio} 1");
-                        break;
-                    case 5:
-                        Console.WriteLine($"{Kontrola.CD} 1");
+                    case Kontrola.Nagrzewanie:
+                        Console.WriteLine("Nagrzewanie aktywowane");
                         break;
                 }
-                Console.WriteLine("x aby kontynuowac");
-            }
-            while ((Console.ReadLine() == "x"));
 
-            Komentarz komentarz = new Komentarz("uzytkownik1", "post1", "wypowiedz", new[] { "tag" }, new DateTime(2019, 12 ,12));
+            } while (NrOpcji != 6);
+
+            Komentarz komentarz = new Komentarz("uzytkownik1", "post1", "wypowiedz", new[] { "tag","tag2" }, new DateTime(2019, 12 ,12));
     
             Console.WriteLine(komentarz.Autor);
             Console.WriteLine(komentarz.KomentowanyPost);
             Console.WriteLine(komentarz.Tresc);
-            Console.WriteLine(komentarz.Tagi);
+            foreach (var tags in komentarz.Tagi) 
+            {
+                Console.WriteLine(tags);
+            }
+
             Console.WriteLine(komentarz.CzasStworzenia);
         }
     }
