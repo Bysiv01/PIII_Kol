@@ -90,14 +90,14 @@ namespace PIII_kol
             */
             
             var stan = Kontrola.Nieaktywne;
-            int opcja;
+            int opcja = 0;
             do
             {
-                opcja = Int32.Parse(Console.ReadKey().ToString());
+                var x = Console.ReadKey().Key;
                 var flag = (Kontrola)(Math.Pow(2, opcja));
                 if (stan.HasFlag(flag))
                 {
-                    stan -= flag;
+                    stan &= ~flag;
                 }
                 else
                 {
