@@ -30,7 +30,7 @@ namespace PIII_kol
 
         public static void Main()
         {
-          /*int minuty;
+          int minuty;
             int sekundy;
             int godziny;
 
@@ -86,8 +86,7 @@ namespace PIII_kol
                 Console.WriteLine($"dotychczas trenowales {godziny} godzin {minuty} minut {sekundy} sekund");
                 Console.WriteLine("Kolejny trening? tak/nie");
             } while (Console.ReadLine() == "tak");
-            Console.WriteLine($"lacznie trenowales {suma_godzin} godzin {suma_minut} minut i { suma_sekund} sekund podczas {trening} treningów"); ;
-            */
+            Console.WriteLine($"lacznie trenowales {suma_godzin} godzin {suma_minut} minut i { suma_sekund} sekund podczas {trening} treningów");
             
             var stan = Kontrola.Wejscie;
             int x;
@@ -95,7 +94,7 @@ namespace PIII_kol
             
             do
             {
-                Console.WriteLine("którą funkcje chcesz aktywowac/dezaktywowac");
+                Console.WriteLine("którą funkcje chcesz aktywowac/dezaktywowac 1-6, 7 wyjście.");
                 
                 val = Console.ReadLine();
                 x = Convert.ToInt32(val);
@@ -187,20 +186,17 @@ namespace PIII_kol
                 }
             } while (x >= 0 && x <= 6);
 
-
-
-
-            /*Komentarz komentarz = new Komentarz("uzytkownik1", "post1", "wypowiedz", new[] { "tag","tag2" }, new DateTime(2019, 12 ,12));
+            var komentarz = new Komentarz("uzytkownik1", "post1", "wypowiedz", new[] { "tag","tag2" }, new DateTime(2019, 12 ,12));
     
             Console.WriteLine(komentarz.Autor);
-            Console.WriteLine(komentarz.KomentowanyPost);
+            Console.WriteLine(komentarz.Komentowany);
             Console.WriteLine(komentarz.Tresc);
             foreach (var tags in komentarz.Tagi) 
             {
                 Console.WriteLine(tags);
             }
 
-            Console.WriteLine(komentarz.CzasStworzenia);*/
+            Console.WriteLine(komentarz.CzasStworzenia);
         }
     }
 }
