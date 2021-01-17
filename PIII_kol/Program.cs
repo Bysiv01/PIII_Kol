@@ -12,7 +12,7 @@ namespace PIII_kol
         [Flags]
         public enum Kontrola
         {
-            Nieaktywne = 0,
+            Wejscie = 0,
             Chłodzenie = 1,
             Nagrzewanie = 2,
             Klimatyzacja = 4,
@@ -89,25 +89,106 @@ namespace PIII_kol
             Console.WriteLine($"lacznie trenowales {suma_godzin} godzin {suma_minut} minut i { suma_sekund} sekund podczas {trening} treningów"); ;
             */
             
-            var stan = Kontrola.Nieaktywne;
-            int opcja = 0;
+            var stan = Kontrola.Wejscie;
+            int x;
+            string val;
+            
             do
             {
-                var x = Console.ReadKey().Key;
-                var flag = (Kontrola)(Math.Pow(2, opcja));
-                if (stan.HasFlag(flag))
+                Console.WriteLine("którą funkcje chcesz aktywowac/dezaktywowac");
+                
+                val = Console.ReadLine();
+                x = Convert.ToInt32(val);
+                var flag = (Kontrola)(Math.Pow(2, x));
+                
+                if (x == 1)
                 {
+                    
+                    if (stan.HasFlag(flag))
+                    {
+                    Console.WriteLine("Chłodzenie dezaktywowane");
                     stan &= ~flag;
-                }
-                else
-                {
+                    }
+                    else
+                    {
+                    Console.WriteLine("Chłodzenie aktywowane");
                     stan ^= flag;
+                    }
                 }
-                Console.WriteLine(stan);
-            } while (opcja >= 0 && opcja<= 5);
+                if (x == 2)
+                {
+
+                    if (stan.HasFlag(flag))
+                    {
+                        Console.WriteLine("Nagrzewanie dezaktywowane");
+                        stan &= ~flag;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nagrzewanie aktywowane");
+                        stan ^= flag;
+                    }
+                }
+                if (x == 3)
+                {
+
+                    if (stan.HasFlag(flag))
+                    {
+                        Console.WriteLine("Klimatyzacja dezaktywowana");
+                        stan &= ~flag;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Klimatyzacja aktywowana");
+                        stan ^= flag;
+                    }
+                }
+                if (x == 4)
+                {
+
+                    if (stan.HasFlag(flag))
+                    {
+                        Console.WriteLine("Nawigacja dezaktywowana");
+                        stan &= ~flag;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Nawigacja aktywowana");
+                        stan ^= flag;
+                    }
+                }
+                if (x == 5)
+                {
+
+                    if (stan.HasFlag(flag))
+                    {
+                        Console.WriteLine("Radio dezaktywowane");
+                        stan &= ~flag;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Radio aktywowane");
+                        stan ^= flag;
+                    }
+                }
+                if (x == 6)
+                {
+
+                    if (stan.HasFlag(flag))
+                    {
+                        Console.WriteLine("CD dezaktywowane");
+                        stan &= ~flag;
+                    }
+                    else
+                    {
+                        Console.WriteLine("CD aktywowane");
+                        stan ^= flag;
+                    }
+                }
+            } while (x >= 0 && x <= 6);
 
 
-            
+
 
             /*Komentarz komentarz = new Komentarz("uzytkownik1", "post1", "wypowiedz", new[] { "tag","tag2" }, new DateTime(2019, 12 ,12));
     
